@@ -87,12 +87,10 @@ func binSearchMiddleCalc(dataSlice []int32, num int32) int32 {
 
 	high := sliceLen
 	low := int32(0)
-	for {
+	for low < high {
 		mid := int32((high - low) / 2)
 		if num == dataSlice[low+mid] {
 			return low + mid
-		} else if low >= high {
-			break
 		} else if num < dataSlice[low+mid] {
 			high = low + mid
 		} else if num > dataSlice[low+mid] {

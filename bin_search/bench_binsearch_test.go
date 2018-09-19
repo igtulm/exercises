@@ -29,7 +29,7 @@ func Benchmark(b *testing.B) {
 			binSearchMiddleCalc(data, int32(i%len(data)))
 		}
 	})
-	b.Run("binary search C", func(b *testing.B) {
+	b.Run("binary search C from Go", func(b *testing.B) {
 		b.ReportAllocs()
 		for i := 0; i < b.N; i++ {
 			binSearchMiddleCalcFromC(data, int32(i%len(data)))
