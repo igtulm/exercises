@@ -1,3 +1,4 @@
+```
 Run on (8 X 2900 MHz CPU s)
 CPU Caches:
   L1 Data 32K (x4)
@@ -20,3 +21,4 @@ BM_TrieMapLookByPrefix              440 ns          439 ns      1697579
 BM_TrieCharNoderGetFreq            1176 ns         1174 ns       594833
 BM_TrieUmapGetFreq                 1160 ns         1158 ns       605777
 BM_TrieMapGetFreq                  1147 ns         1145 ns       604506
+```
