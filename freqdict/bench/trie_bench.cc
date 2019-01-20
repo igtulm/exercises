@@ -1,5 +1,7 @@
 #include <benchmark/benchmark.h>
+#include <string>
 #include <vector>
+#include "hashmap.h"
 #include "trie.h"
 
 using std::string;
@@ -118,6 +120,18 @@ static void BM_TrieMapInsert(benchmark::State &state) {
 }
 BENCHMARK(BM_TrieMapInsert);
 
+static void BM_HashMapInsert(benchmark::State &state) {
+  freqdict::HashMap hm;
+
+  unsigned i = 0;
+  for (auto _ : state) {
+    hm.Insert(twords[i]);
+    ++i;
+    if (i == twords.size()) i = 0;
+  }
+}
+BENCHMARK(BM_HashMapInsert);
+
 ////
 //// LookByPrefix bench
 ////
@@ -215,6 +229,21 @@ static void BM_TrieMapGetFreq(benchmark::State &state) {
   }
 }
 BENCHMARK(BM_TrieMapGetFreq);
+
+static void BM_HashMapGetFreq(benchmark::State &state) {
+  freqdict::HashMap hm;
+
+  // seeding
+  for (auto &v : twords) hm.Insert(v);
+
+  unsigned i = 0;
+  for (auto _ : state) {
+    hm.GetFreq(twords[i]);
+    ++i;
+    if (i == twords.size()) i = 0;
+  }
+}
+BENCHMARK(BM_HashMapGetFreq);
 
 ///
 /// \brief BENCHMARK_MAIN

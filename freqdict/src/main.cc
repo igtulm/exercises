@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "trie.h"
 
+#include "hashmap.h"
 #include "wordsparser.h"
 
 using freqdict::Trie;
@@ -13,10 +14,12 @@ int main() {
   freqdict::TrieOnUMap trUmap;
   freqdict::TrieOnUMap trMap;
   freqdict::TrieOnCn trCn;
+  freqdict::HashMap Hmap;
   for (auto word : wp) {
     trUmap.Insert(word);
     trMap.Insert(word);
     trCn.Insert(word);
+    Hmap.Insert(word);
   }
 
   printf("Found: %i\n", trUmap.IsPresented("the"));
@@ -27,4 +30,7 @@ int main() {
 
   printf("Found: %i\n", trCn.IsPresented("the"));
   printf("Freq: %u\n", trCn.GetFreq("the"));
+
+  printf("Found: %i\n", Hmap.IsPresented("the"));
+  printf("Freq: %u\n", Hmap.GetFreq("the"));
 }
