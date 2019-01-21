@@ -80,6 +80,13 @@ static void BM_TrieMapAllocate(benchmark::State &state) {
 }
 BENCHMARK(BM_TrieMapAllocate);
 
+static void BM_TrieHashMapAllocate(benchmark::State &state) {
+  for (auto _ : state) {
+    freqdict::HashMap hm;
+  }
+}
+BENCHMARK(BM_TrieHashMapAllocate);
+
 ////
 //// Insert bench
 ////
